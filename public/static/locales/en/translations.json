@@ -14,8 +14,10 @@
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
     "MyFirstMenu": "My First Menu",
-    "Dashboard": "Dashboard",
-    "Settings": "Settings"
+    "Welcome": "Welcome",
+    "Settings": "Settings",
+    "Conference": "Conferences",
+    "MyConference": "MyConferences"
   },
   "Tooltips": {
     "Logout": "Logout",
@@ -31,6 +33,77 @@
     "MinDateMessage": "Date should not be before minimal date",
     "MaxDateMessage": "Date should not be after maximal date"
   },
+
+  "LandingPage": {
+    "Title": "Welcome!",
+    "SubTitle": "Please enter your email:",
+    "BadEmail": "This is not a valid email!"
+  },
+
+  "UserMenu": {
+    "User": "User"
+  },
+
+  "Conferences": {
+    "Filters": {
+      "StartDate": "Start date: ",
+      "EndDate": "End date: "
+    },
+    "Speaker": "Speaker: ",
+    "Attend": "Attend",
+    "Join": "Join",
+    "Withdraw": "Withdraw",
+	  "StatusNotSet": "Not attending"
+  },
+
+  "MyConferences": {
+    "Filters": {
+      "StartDate": "Start date: ",
+      "EndDate": "End date: "
+    },
+    "Speaker": "Speaker: ",
+    "Edit": "Edit",
+    "Delete": "Delete"
+  },
+
+  "Conference": {
+    "Info": "Conference info",
+    "Location": "Location",
+    "Speakers": "Speakers",
+    "Name": "Conference name",
+    "StartDate": "Start date",
+    "EndDate": "End date",
+    "Type": "Conference type",
+    "Category": "Category"
+  },
+
+  "Location": {
+    "Name": "Name",
+    "Address": "Address",
+    "Country": "Country",
+    "County": "County",
+    "City": "City",
+    "Latitude": "Latitude",
+    "Longitude": "Longitude"
+  },
+
+  "Speaker": {
+    "Name": "Name",
+    "Nationality": "Nationality",
+    "Rating": "Rating",
+    "MainSpeaker": "Main Speaker"
+  },
+
+  "General": {
+    "Buttons": {
+      "ApplyFilters": "Apply filters",
+      "ResetFilters": "Reset filters",
+      "AddConference": "AddConference",
+      "Save": "Save",
+      "AddSpeaker": "Add speaker"
+    }
+  },
+
   "Validations": {
     "Cnp": "The value is not a valid identifier number",
     "UniqueCnp": "The identifier number is not unique",

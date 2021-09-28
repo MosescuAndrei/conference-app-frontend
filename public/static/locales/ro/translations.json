@@ -6,9 +6,11 @@
   "Forbidden": "Nu aveti dreptul sa vedeti aceasta pagina!",
   "NavBar": {
     "MyFirstMenu": "Primul meu meniu",
-    "Dashboard": "Panou central",
+    "Welcome": "Bun venit",
     "Settings": "Setari",
-    "User": "Profil"
+    "User": "Profil",
+    "Conference": "Conferinte",
+    "MyConference": "Conferintele mele"
   },
   "Tooltips": {
     "Logout": "Iesire",
@@ -19,11 +21,90 @@
     "Yes": "Da",
     "No": "Nu"
   },
+
+  "Conference": {
+    "Info": "Informatii conferinta",
+    "Location": "Locatie",
+    "Speakers": "Oratori",
+    "Name": "Nume conferinta",
+    "StartDate": "Data inceput",
+    "EndDate": "Data sfarsit",
+    "Type": "Tipul conferintei",
+    "Category": "Categorie"
+  },
+
+  "Location": {
+    "Name": "Nume",
+    "Address": "Adresa",
+    "Country": "Tara",
+    "County": "Judet",
+    "City": "Oras",
+    "Latitude": "Latitudine",
+    "Longitude": "Longitudine"
+  },
+
+  "Speaker": {
+    "Name": "Nume",
+    "Nationality": "Nationalitate",
+    "Rating": "Rating",
+    "MainSpeaker": "Orator principal"
+  },
+
+  "General": {
+    "Buttons": {
+      "ApplyFilters": "Aplica filtre",
+      "ResetFilters": "Reseteaza filtre",
+      "AddConference": "Adauga Conferinta",
+      "Save": "Salveaza",
+      "AddSpeaker": "Adauga orator"
+    }
+  },
+
+  "Conferences": {
+    "Filters": {
+      "StartDate": "Data incepere: ",
+      "EndDate": "Data terminare: "
+    },
+    "Speaker": "Orator: ",
+    "Attend": "Participa",
+    "Join": "Inscrie-te",
+    "Withdraw": "Retrage-te",
+    "StatusNotSet": "Nu participi"
+  
+  },
+
+  "MyConferences": {
+    "Filters": {
+      "StartDate": "Data incepere: ",
+      "EndDate": "Data terminare: "
+    },
+    "Speaker": "Orator: ",
+    "Edit": "Editeaza",
+    "Delete": "Sterge"
+  },
+  
+  
   "DateTime": {
     "InvalidDateMessage": "Formatul datei este invalid",
     "MinDateMessage": "Data introdusa nu poate fi mai mica decat valoarea minima",
     "MaxDateMessage": "Data introdusa nu poate fi mai mare decat valoarea maxima"
   },
+
+  "LandingPage": {
+    "Title": "Bun venit!",
+    "SubTitle": "Te rog introdu email-ul personal:",
+    "BadEmail": "Acesta nu este un email valid!"
+  },
+
+  "UserMenu": {
+    "User": "Utilizator"
+  },
+
+  "ConferenceListContainer": {
+    
+
+  },
+
   "Validations": {
     "Cnp": "CNP-ul nu este valid",
     "UniqueCnp": "CNP-ul nu este unic",
