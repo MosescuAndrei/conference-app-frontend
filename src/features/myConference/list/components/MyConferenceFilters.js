@@ -9,49 +9,49 @@ import PropTypes from 'prop-types'
 import { generateDefaultFilters } from 'utils/functions'
 
 const MyConferenceFilters = props => {
-
   const { filters, onApplyFilters } = props
-  const [startDate,setStartDate] = useState(filters.startDate)
-  const [endDate,setEndDate] = useState(filters.endDate)
+  const [startDate, setStartDate] = useState(filters.startDate)
+  const [endDate, setEndDate] = useState(filters.endDate)
 
   const handleApplyButton = useCallback(() => onApplyFilters({ startDate, endDate }), [onApplyFilters, endDate, startDate])
-  const handleResetButton = useCallback(() => {const defaultFilters = generateDefaultFilters() 
-                                                    setStartDate(defaultFilters.startDate) 
-                                                    setEndDate(defaultFilters.endDate)}, [])
-  const handleKeyPressed = useCallback(({ keyCode }) => (keyCode === 13 && handleApplyButton()), [handleApplyButton])
+  const handleResetButton = useCallback(() => {
+    const defaultFilters = generateDefaultFilters()
+    setStartDate(defaultFilters.startDate)
+    setEndDate(defaultFilters.endDate)
+  }, [])
+  const handleKeyPressed = useCallback(({ keyCode }) => keyCode === 13 && handleApplyButton(), [handleApplyButton])
   const { t } = useTranslation()
 
-
   return (
-      <IconCard
-        icon={SearchIcon}
-        iconColor='theme'
-        content={
-          <Fragment>
-            <Grid container spacing={2} >
-              <Grid item xs={12} lg={3}>
-                <DateTime label={t('Conferences.Filters.StartDate')} clearable value ={startDate} onChange={setStartDate}/>
-              </Grid>
-              <Grid item xs={12} lg={3}>
-                <DateTime label={t('Conferences.Filters.EndDate')} clearable value ={endDate} onChange={setEndDate}/>
-              </Grid>
-              <Grid item xs={12} lg={5} >
-                <Button size={'sm'} color={'primary'} right={true} onClick={handleResetButton}>
-                    {t('General.Buttons.ResetFilters')}
-                </Button>
-                <Button size={'sm'} color={'primary'} right={true} onClick={handleApplyButton,handleKeyPressed}>
-                    {t('General.Buttons.ApplyFilters')}
-                </Button>
-               </Grid>
+    <IconCard
+      icon={SearchIcon}
+      iconColor='theme'
+      content={
+        <Fragment>
+          <Grid container spacing={2} onKeyDown={handleKeyPressed}>
+            <Grid item xs={12} lg={3}>
+              <DateTime label={t('Conferences.Filters.StartDate')} clearable value={startDate} onChange={setStartDate} />
             </Grid>
-          </Fragment>
-        }
-      />
+            <Grid item xs={12} lg={3}>
+              <DateTime label={t('Conferences.Filters.EndDate')} clearable value={endDate} onChange={setEndDate} />
+            </Grid>
+            <Grid item xs={12} lg={5}>
+              <Button size={'sm'} color={'primary'} right={true} onClick={handleResetButton}>
+                {t('General.Buttons.ResetFilters')}
+              </Button>
+              <Button size={'sm'} color={'primary'} right={true} onClick={handleApplyButton}>
+                {t('General.Buttons.ApplyFilters')}
+              </Button>
+            </Grid>
+          </Grid>
+        </Fragment>
+      }
+    />
   )
 }
 MyConferenceFilters.propTypes = {
-    filters: PropTypes.object,
-    onApplyFilters: PropTypes.func
+  filters: PropTypes.object,
+  onApplyFilters: PropTypes.func
 }
 
 export default MyConferenceFilters

@@ -1,57 +1,55 @@
-import IconCard from '@bit/totalsoft_oss.react-mui.icon-card'
-import { Grid } from '@material-ui/core'
-import React, { Fragment, useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import SearchIcon from '@material-ui/icons/Search'
-import { useTranslation } from 'react-i18next'
-import Button from '@bit/totalsoft_oss.react-mui.button'
+import { Grid } from '@material-ui/core'
 import DateTime from '@bit/totalsoft_oss.react-mui.date-time'
+import Button from '@bit/totalsoft_oss.react-mui.button'
+import IconCard from '@bit/totalsoft_oss.react-mui.icon-card'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { generateDefaultFilters } from 'utils/functions'
 
-const ConferenceFilters = props => {
-
+function ConferenceFilters(props) {
   const { filters, onApplyFilters } = props
-  const [startDate,setStartDate] = useState(filters.startDate)
-  const [endDate,setEndDate] = useState(filters.endDate)
-
-  const handleApplyButton = useCallback(() => onApplyFilters({ startDate, endDate }), [onApplyFilters, endDate, startDate])
-  const handleResetButton = useCallback(() => {const defaultFilters = generateDefaultFilters() 
-                                                    setStartDate(defaultFilters.startDate) 
-                                                    setEndDate(defaultFilters.endDate)}, [])
-  const handleKeyPressed = useCallback(({ keyCode }) => (keyCode === 13 && handleApplyButton()), [handleApplyButton])
+  const [startDate, setStartDate] = useState(filters?.startDate)
+  const [endDate, setEndDate] = useState(filters?.endDate)
   const { t } = useTranslation()
+  const handleApplyButton = useCallback(() => onApplyFilters({ startDate, endDate }), [endDate, onApplyFilters, startDate])
+  const handleResetButton = useCallback(() => onApplyFilters(generateDefaultFilters()), [onApplyFilters])
+  const handleEnterPress = useCallback(event => event.keyCode === 13 && handleApplyButton(), [handleApplyButton])
 
+  useEffect(() => {
+    setStartDate(filters?.startDate)
+    setEndDate(filters?.endDate)
+  }, [filters])
 
   return (
+    <>
       <IconCard
         icon={SearchIcon}
         iconColor='theme'
         content={
-          <Fragment>
-            <Grid container spacing={2} >
-              <Grid item xs={12} lg={3}>
-                <DateTime label={t('Conferences.Filters.StartDate')} clearable value ={startDate} onChange={setStartDate}/>
-              </Grid>
-              <Grid item xs={12} lg={3}>
-                <DateTime label={t('Conferences.Filters.EndDate')} clearable value ={endDate} onChange={setEndDate}/>
-              </Grid>
-              <Grid item xs={12} lg={5} >
-                <Button size={'sm'} color={'primary'} right={true} onClick={handleResetButton}>
-                    {t('General.Buttons.ResetFilters')}
-                </Button>
-                <Button size={'sm'} color={'primary'} right={true} onClick={handleApplyButton,handleKeyPressed}>
-                    {t('General.Buttons.ApplyFilters')}
-                </Button>
-               </Grid>
+          <Grid container spacing={2} onKeyDown={handleEnterPress}>
+            <Grid item xs={12} lg={3}>
+              <DateTime label={t('Conferences.Filters.StartDate')} clearable value={startDate} onChange={setStartDate} />
             </Grid>
-          </Fragment>
+            <Grid item xs={12} lg={3}>
+              <DateTime label={t('Conferences.Filters.EndDate')} clearable value={endDate} onChange={setEndDate} />
+            </Grid>
+          </Grid>
         }
       />
+      <Button size={'sm'} color={'primary'} right={true} onClick={handleResetButton}>
+        {t('General.Buttons.ResetFilters')}
+      </Button>
+      <Button size={'sm'} color={'primary'} right={true} onClick={handleApplyButton}>
+        {t('General.Buttons.ApplyFilters')}
+      </Button>
+    </>
   )
 }
 ConferenceFilters.propTypes = {
-    filters: PropTypes.object,
-    onApplyFilters: PropTypes.func
+  filters: PropTypes.object,
+  onApplyFilters: PropTypes.func
 }
 
 export default ConferenceFilters

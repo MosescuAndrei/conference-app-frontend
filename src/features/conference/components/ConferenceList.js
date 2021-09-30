@@ -21,7 +21,7 @@ const ConferenceList = (props) => {
 }
 
 ConferenceList.propTypes = {
-    conferences: PropTypes.array.isRequired
+    conferences: PropTypes.array
 }
 
 export default ConferenceList;

@@ -11,40 +11,38 @@ import { conference as mockConference } from "utils/mocks/myConference";
 import { useRouteMatch } from "react-router";
 
 const MyConferenceContainer = () => {
-
-    const { t } = useTranslation()
     const [, setHeader] = useHeader()
+    const { t } = useTranslation()
     const [conference, dispatch] = useReducer(reducer, initialConference)
-    const match = useRouteMatch();
-    const conferenceId = match.params.id;
-    const isNew = conferenceId === 'new';
-
+    const match = useRouteMatch()
+    
+    const conferenceId = match.params.id
+    const isNew = conferenceId === 'new'
+  
     useEffect(() => {
-        if (!isNew) {
-            dispatch({ type: 'resetData', payload: mockConference })
-        }
-    }, [isNew]) 
-
-    useEffect(() => {return () => {setHeader(null)}}, [setHeader])
+      if (!isNew) {
+        dispatch({ type: 'resetConference', payload: mockConference })
+      }
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  
+    useEffect(() => () => setHeader(null), []) // eslint-disable-line react-hooks/exhaustive-deps
     useEffect(() => {
-        setHeader(<MyConferenceHeader 
-            title={conference.name} actions = {<SaveButton title={t("General.Buttons.Save")}/>} 
-                />
-                )
-            },[conference.name,setHeader, t])
-
-    const {data,loading} = {loading: false, data: {
+      setHeader(<MyConferenceHeader title={conference.name} actions={<SaveButton title={t('General.Buttons.Save')} />} />)
+    }, [conference.name, setHeader, t])
+  
+    const { data, loading } = {
+      loading: false,
+      data: {
         typeList: types,
         categoryList: categories,
         countryList: countries,
         countyList: counties,
         cityList: cities
-    }}
-
-    if(loading) return <LoadingFakeText lines = {10}/>
-
-    return(
-        <MyConference
+      }
+    }
+    if (loading) return <LoadingFakeText line={10} />
+    return (
+      <MyConference
         conference={conference}
         dispatch={dispatch}
         types={data?.typeList}
@@ -52,9 +50,8 @@ const MyConferenceContainer = () => {
         countries={data?.countryList}
         counties={data?.countyList}
         cities={data?.cityList}
-    />
+      />
     )
-}
-
-export default MyConferenceContainer;
-
+  }
+  
+  export default MyConferenceContainer

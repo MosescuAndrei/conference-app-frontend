@@ -46,7 +46,7 @@ export const addDays = curry((days, date) => {
 
 // addOneDay :: Date -> Date
 export const addOneDay = addDays(1)
-
+export const extractPager = ({ page, pageSize }) => ({ page, pageSize })
 // addMilliseconds :: Int -> Date -> Date
 export const addMilliseconds = curry((milliseconds, date) => new Date(date.getTime() + milliseconds))
 
